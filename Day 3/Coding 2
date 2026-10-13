@@ -1,0 +1,37 @@
+
+#include <stdio.h>
+
+int countDigit(int n, int d)
+{
+    if (n == 0)
+        return 0;
+
+    if (n % 10 == d)
+        return 1 + countDigit(n / 10, d);
+
+    return countDigit(n / 10, d);
+}
+
+int main()
+{
+    int n, d, count;
+
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    printf("Enter the digit to count: ");
+    scanf("%d", &d);
+
+    if (n == 0)
+        count = (d == 0) ? 1 : 0;
+    else
+        count = countDigit(n, d);
+
+    printf("Digit %d occurs %d times", d, count);
+
+    return 0;
+}
+Output:
+Enter a positive integer: 12232
+Enter the digit to count: 2
+Digit 2 occurs 3 times
